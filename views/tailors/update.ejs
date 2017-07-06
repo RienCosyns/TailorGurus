@@ -1,0 +1,13 @@
+<% include ../main/partials/header %>
+<form action="/update/<%=tailor._id %>" method="POST">
+    <label for="name">Name: </label>
+    <input type="text" name="name" value="<%= tailor.name %>">
+    <label for="location">Location: </label>
+    <input type="text" name="location" value="<%= tailor.location %>">
+    <label for="email">Email: </label>
+    <input type="email" name="email" value="<%= tailor.email %>">
+    <label for="price">Price: </label>
+    <input type="text" name="price" value="<%= tailor.price %>">
+    <input type="submit" value="submit">
+</form>
+<% include ../main/partials/footer %>

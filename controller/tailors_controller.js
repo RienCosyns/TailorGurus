@@ -1,4 +1,66 @@
-//
+const Tailor = require("../models/TailorShops");
+module.exports = {
+    viewAllTailors(req, res){
+        Tailor.find({}, (err, tailors) => {
+            if (err){
+                console.log(err);
+            }else{
+                res.render("./tailors/all", {tailors: tailors});
+            }
+        })
+    },
+    viewAddTailor(req, res){
+        res.render("./tailors/add");
+    },
+    viewTailor(req, res){
+        Tailor.findById({_id: req.params.id}, (err, tailor) => {
+            if (err){
+                console.log(err)
+            }else{
+                res.render("./tailors/profile", {tailor: tailor})
+            }
+        })
+    },
+    viewUpdateTailor(req, res){
+        Tailor.findById({_id: req.params.id}, (err, tailor) => {
+            if (err){
+                console.log(err)
+            }else{
+                res.render("./tailors/update", {tailor: tailor})
+            }
+        })
+    },
+    addTailor(req, res){
+        Tailor.create(req.body, (error, record) => {
+            if (error){
+                console.log(error)
+            } else {
+                console.log(record);
+                res.redirect("/tailors");
+            }
+        })
+    },
+    updateTailor(req, res){
+        Tailor.findByIdAndUpdate({_id: req.params.id}, req.body, (error, record) => {
+            if (error){
+                console.log(error)
+            }else{
+                console.log(record);
+                res.redirect("/tailors/" + record._id)
+            }
+        })
+    },
+    deleteTailor(req, res){
+        Tailor.findByIdAndRemove({_id: req.params.id}, (err, record) => {
+            if (err){
+                console.log(err)
+            } else {
+                console.log("Record Deleted");
+                res.redirect('/tailors')
+            }
+        })
+    }
+}
 
 //GET
 // Create tailor :/tailors/add => /tailors/:id

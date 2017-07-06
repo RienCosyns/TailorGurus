@@ -1,11 +1,4 @@
-<!-- will show all tailor 
-each tailor will have a button to show , to update, delete
--->
-
 <% include ../main/partials/header %>
-<h1>Tailors</h1>
-<a href="/tailors/add">Add Tailor</a>
-<% tailors.forEach( (tailor) => { %>
     <div>
         <h2>
             <%= tailor.name %>
@@ -19,10 +12,12 @@ each tailor will have a button to show , to update, delete
         <p>
             <%= tailor.price %>
         </p>
-        <a href="/tailors/<%=tailor._id %>">Show Tailor</a>
         <a href="/tailors/update/<%=tailor._id %>">Update Tailor</a>
+        <form action="/delete/<%=tailor._id %>" method="POST">
+            <input type="submit" name="delete" value="Delete">
+        </form>
+        
     </div>
-   <% }) %>
 <div>
     
 </div>
