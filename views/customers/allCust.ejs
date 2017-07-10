@@ -1,0 +1,23 @@
+<%include ../partials/header%>
+
+<h1>all customers</h1>
+<a href="/customer/add"><button type="button">add a customer</button></a>
+
+<%customer.forEach( cust =>{%>
+<ul>
+    <li>name: 
+        <%=cust.name%>
+    </li>
+    <li>email address:
+        <%=cust.email%>
+    </li>
+    <li>phone number:
+        <%=cust.phoneNumber%>
+
+    </li>
+    <a href="/customer/<%=cust._id%>"><button type="button">view customer</button></a>
+</ul>
+
+
+<%})%>
+<%include ../partials/footer%>
