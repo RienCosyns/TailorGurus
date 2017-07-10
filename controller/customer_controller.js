@@ -16,7 +16,11 @@ module.exports = {
 
     },
     viewSingleCustomer(req, res) {
-
+        let cust_id = req.params.id
+        customer.findById(cust_id, (err, customer)=>{
+            if(err){console.log(err)}
+            res.render('customers/view', {customer})
+        })
     },
     createNewCustomer(req, res) {
         customer.create(req.body, (err, record)=>{
